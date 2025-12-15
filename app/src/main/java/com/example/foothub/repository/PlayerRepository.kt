@@ -8,7 +8,7 @@ object PlayerRepository {
         Player(
             id = 1,
             name = "Antoine Griezmann",
-            team = "Atlético de MAadrid",
+            team = "Atlético de Madrid",
             position = "Media punta",
             age = 34,
             nationality = "Francia",

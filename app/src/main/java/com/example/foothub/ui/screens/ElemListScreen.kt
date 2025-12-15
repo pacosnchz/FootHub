@@ -20,25 +20,37 @@ fun ElemListScreen(
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(16.dp)
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp) // espacio entre tarjetas
     ) {
         items(players) { player ->
             FootHubCard(onClick = { onPlayerClick(player) }) {
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
+                    // Imagen del jugador
                     Image(
                         painter = rememberAsyncImagePainter(player.photoUrl),
                         contentDescription = player.name,
-                        modifier = Modifier.size(64.dp)
+                        modifier = Modifier
+                            .size(64.dp)
                     )
+
+                    // Información textual
                     Column {
                         Text(player.name)
-                        Text("${player.team} • ${player.position}")
+                        Text("Equipo actual: ${player.team}")
+                        Text("Posición: ${player.position}")
+                        Text("Edad: ${player.age}")
+                        Text("Nacionalidad: ${player.nationality}")
                     }
                 }
             }
         }
     }
 }
+
+

@@ -17,11 +17,8 @@ class MainActivity : ComponentActivity() {
         Thread.sleep(1000)
 
         setContent {
-            // Calculamos tamaño de ventana para automatizar layout
             val windowSizeClass = calculateWindowSizeClass(this)
-
             FootHubTheme {
-                // Navegación adaptativa según tamaño de ventana
                 AppNavigation(windowSizeClass = windowSizeClass)
             }
         }

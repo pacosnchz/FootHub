@@ -2,6 +2,8 @@ package com.example.foothub.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -13,13 +15,20 @@ import androidx.compose.ui.unit.sp
 import com.example.foothub.R
 
 @Composable
-fun FootHubHome(onSobreClick: () -> Unit = {}) {
+fun FootHubHome(
+    onSobreClick: () -> Unit = {},
+    onListClick: () -> Unit = {}
+) {
+    // Estado del scroll vertical
+    val scrollState = rememberScrollState()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .verticalScroll(scrollState)  // permite desplazamiento
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Top
     ) {
 
         Image(
@@ -54,6 +63,7 @@ fun FootHubHome(onSobreClick: () -> Unit = {}) {
 
         Spacer(modifier = Modifier.height(40.dp))
 
+        // Botón Sobre la aplicación
         Button(
             onClick = onSobreClick,
             modifier = Modifier
@@ -63,5 +73,21 @@ fun FootHubHome(onSobreClick: () -> Unit = {}) {
         ) {
             Text("Sobre la aplicación", fontSize = 18.sp)
         }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Botón Lista de jugadores
+        Button(
+            onClick = onListClick,  // <- aquí solo llamas a la lambda
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(100.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF7A1F))
+        ) {
+            Text("Ver Lista de Jugadores", fontSize = 18.sp)
+        }
+
+
+        Spacer(modifier = Modifier.height(24.dp)) // espacio extra al final
     }
 }
