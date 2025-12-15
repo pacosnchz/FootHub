@@ -50,6 +50,10 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
 
+    // Coil Compose para cargar imágenes desde URL
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
+
     // ⭐⭐ Necesario para SplashScreen nativa ⭐⭐
     implementation("androidx.core:core-splashscreen:1.0.1")
 
